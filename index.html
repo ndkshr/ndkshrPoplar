@@ -261,7 +261,40 @@
 
 
 
+
 <!--NDKSHRPOPLAR-->
+
+<!--START-->
+<h1 class="c2" id="h.hmvd5kvp20sd">
+  <span class="c8">Starting multiple Flows in same CoroutineScope</span>
+</h1>
+<p class="c4">
+  <span class="c9">In Kotlin, Flows are sequential by nature. They are collected sequentially too. Hence, to make them concurrent, we should wrap each flow in separate launch{} block.
+Eg:
+scope.launch {
+  launch {flow1.collect()}
+  launch {flow2.collect()}
+}</span>
+</p>
+<p class="c0">
+  <span class="c1"></span>
+</p>
+<p class="c4">
+  <span class="c1">20/11/2024 11:16:42</span>
+</p>
+<p class="c4">
+  <span class="c1">Tag: Kotlin</span>
+</p>
+<hr>
+<p class="c0">
+  <span class="c1"></span>
+</p>
+<p class="c0">
+  <span class="c1"></span>
+</p>
+<!--END-->
+            
+        
 
 <!--START-->
 <h1 class="c2" id="h.hmvd5kvp20sd">
