@@ -12,6 +12,11 @@
         padding: 0
       }
 
+      code {
+        color: #f67280;
+        white-space: pre-wrap;
+      }
+
       .c0 {
         padding-top: 0pt;
         padding-bottom: 0pt;
@@ -271,10 +276,12 @@
 <p class="c4">
   <span class="c9">In Kotlin, Flows are sequential by nature. They are collected sequentially too. Hence, to make them concurrent, we should wrap each flow in separate launch{} block.
 Eg:
+<code>
 scope.launch {
   launch {flow1.collect()}
   launch {flow2.collect()}
-}</span>
+}
+</code></span>
 </p>
 <p class="c0">
   <span class="c1"></span>
