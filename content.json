@@ -1,7 +1,50 @@
 {
   "cards": [
     {
+      "title": "Kotlin Soft keywords and enum",
+      "type": "TEXT",
+      "content": "Soft keywords are those that you can use as variable names, function names, etc. A good example is the 'enum' keyword in Kotlin. <code>val enum = 10 //compiles \n val class = 10 //error -> class is hard keyword</code>",
+      "timestamp": "",
+      "tags": ["Kotlin"]
+    },
+    {
+      "title": "Kotlin Collections v/s Sequence",
+      "type": "TEXT",
+      "content": "Collections store all the elements in memory and Sequences are lazy by nature and only bring the required element to memory for computation.</br> Prefer sequence over a collection when working with very large data, or supposedly infinite stream of data.",
+      "timestamp": "29/12/2024 21:04:05",
+      "tags": ["Kotlin"]
+    },
+    {
+      "title": "Static v/s Dynamic v/s Strong v/s Weak Typed Languages",
+      "type": "TEXT",
+      "content": "Static v/s Dynamic: when the type checking is done. Compile time type checking makes a language static, and run-time type checking makes it dynamic. Strong v/s Weak: is decided by the ability to indirectly change type according to convenience. Some languages let conversion from int to long and vice versa. But others will protest against it for loss of precision. The latter being strongly typed and former, weakly typed.",
+      "timestamp": "29/12/2024 20:52:47",
+      "tags": ["Programming"]
+    },
+    {
+      "title": "View v/s ViewHolder",
+      "type": "TEXT",
+      "content": "A View is a node in the View Tree hierarchy, and View Holder is a design pattern or data modal class that is used to cache references to the View.",
+      "timestamp": "27/12/2024 08:11:35",
+      "tags": ["RecyclerView", "Android"]
+    },
+    {
+      "title": "Dynamic Code Loading in Android",
+      "type": "TEXT",
+      "content": "<code>DexClassLoader</code>: allows download of a new module as <code>.dex</code> or <code>.jar</code>. It can be used for A/B testing and feature flag systems. It allows users to load code dynamically at runtime. This is also used as a method for obfuscation, where sensitive parts of code base are loaded on request lazily from remote.",
+      "timestamp": "26/12/2024 22:38:14",
+      "tags": ["Android"]
+    },
+    {
+      "title": "Recycler in Recycler View",
+      "type": "TEXT",
+      "content": "Recycler in Android Recycler View has two caching mechanisms. Firstly, Scrap View - a lightweight way to store unused views and ViewHolders. Secondly, Recycle Pool - stores the views but throws away a lot of the metadata including ViewHolders. Knowing the difference would help a lot while optimizing Recycler View performance.",
+      "timestamp": "22/12/2024 22:32:32",
+      "tags": ["Android"]
+    },
+    {
       "title": "What is @JvmStatic",
+      "type": "TEXT",
       "content": "In Kotlin, we use Companion object to put all static members and methods. This is merely an imitation of static in Java. @JvmStatic is used to tell the compiler to create an additional method in Java bytecode. So we will have two methods for the same companion method in Kotlin - one static and one non-static. Static stays in the class, and non-static is in the generated static Companion class.",
       "timestamp": "23/11/2024 21:22:58",
       "tags": [
@@ -11,6 +54,7 @@
     },
     {
       "title": "What is @JvmSynthetic",
+      "type": "TEXT",
       "content": "While maintaining APIs in Kotlin that can be used by both Java and Kotlin Client projects, we need to be careful about how we expose our APIs, especially with Kotlin extension methods, marked as public final static in Java Bytecode. Hence we should mark them as  <code>@JvmSynthetic</code> to mark the extension with a synthetic modifier in bytecode. This helps us avoid automatic generation of Java equivalents of Kotlin extensions.",
       "timestamp": "23/11/2024 21:12:42",
       "tags": [
@@ -20,7 +64,8 @@
     },
     {
       "title": "JGit is awesome",
-      "content": "JGit makes it super wasy to push commits with Java; works well with Kotlin too.",
+      "type": "TEXT",
+      "content": "JGit makes it super easy to push commits with Java; works well with Kotlin too.",
       "timestamp": "21/11/2024 18:02:56",
       "tags": [
         "Java",
@@ -30,7 +75,8 @@
     },
     {
       "title": "Clearing all Runnables from Handler",
-      "content": "To clear all runnable callbacks from handler <code>handler.removeCallbacksAndMessages(null);</code> Just pass a \"null\"!!",
+      "type": "TEXT",
+      "content": "To clear all runnable callbacks from handler<code>handler.removeCallbacksAndMessages(null);</code>Just pass a \"null\"!!",
       "timestamp": "21/11/2024 15:10:44",
       "tags": [
         "Android"
@@ -38,6 +84,7 @@
     },
     {
       "title": "Starting multiple Flows in same CoroutineScope",
+      "type": "TEXT",
       "content": "In Kotlin, Flows are sequential by nature. They are collected sequentially too. Hence, to make them concurrent, we should wrap each flow in separate launch{} block.\nEg:\n<code>\nscope.launch {\n  launch {flow1.collect()}\n  launch {flow2.collect()}\n}\n</code>",
       "timestamp": "20/11/2024 11:16:42",
       "tags": [
@@ -46,6 +93,7 @@
     },
     {
       "title": "Compose: Handling Back Press",
+      "type": "TEXT",
       "content": "BackHandler() is a compose side effect that lets us handle back press. We can pass  a lambda to the OnBackPressedDispatcher of the local owner of back press dispatcher. It can then propagate up the view tree.\nNote to self:  read PredictiveBackHandler",
       "timestamp": "19/11/2024 22:54:00",
       "tags": [
@@ -55,6 +103,7 @@
     },
     {
       "title": "States in Jetpack Compose",
+      "type": "TEXT",
       "content": "States are similar to React \"States\". A value can be observed by a @Composable with the remember API. It can be used to show/hide views or other logical functionalities.",
       "timestamp": "19/11/2024 20:33:50",
       "tags": [
@@ -64,6 +113,7 @@
     },
     {
       "title": "Poplar: A micro-blogging app",
+      "type": "TEXT",
       "content": "This is the first programmatically uploaded blog from the Android app. The app is made with Jetpack Compose. And ZERO fragments. This is very new for me. I'm excited!",
       "timestamp": "19/11/2024 04:17:45",
       "tags": [
@@ -72,6 +122,7 @@
     },
     {
       "title": "First Blog",
+      "type": "TEXT",
       "content": " Hello, I am creating a fun application to post micro-blogs. Essentially to journal my journey and learnings through life. I hope to maintain this blog consistently!",
       "timestamp": "19/11/2024 00:10:10",
       "tags": [
