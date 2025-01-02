@@ -3,7 +3,7 @@
     {
       "title": "Kotlin Soft keywords and enum",
       "type": "TEXT",
-      "content": "Soft keywords are those that you can use as variable names, function names, etc. A good example is the 'enum' keyword in Kotlin.\n<code>val enum = 10 //compiles\nval class = 10 //error -> class is hard keyword</code>",
+      "content": "Soft keywords are those that you can use as variable names, function names, etc. A good example is the 'enum' keyword in Kotlin.</br><code>val enum = 10 //compiles</br>val class = 10 //error -> class is hard keyword</code>",
       "timestamp": "",
       "tags": ["Kotlin"]
     },
@@ -85,7 +85,7 @@
     {
       "title": "Starting multiple Flows in same CoroutineScope",
       "type": "TEXT",
-      "content": "In Kotlin, Flows are sequential by nature. They are collected sequentially too. Hence, to make them concurrent, we should wrap each flow in separate launch{} block.\nEg:\n<code>\nscope.launch {\n  launch {flow1.collect()}\n  launch {flow2.collect()}\n}\n</code>",
+      "content": "In Kotlin, Flows are sequential by nature. They are collected sequentially too. Hence, to make them concurrent, we should wrap each flow in separate launch{} block.</br>Eg:</br><code></br>scope.launch {</br>  launch {flow1.collect()}</br>  launch {flow2.collect()}</br>}</br></code>",
       "timestamp": "20/11/2024 11:16:42",
       "tags": [
         "Kotlin"
@@ -94,7 +94,7 @@
     {
       "title": "Compose: Handling Back Press",
       "type": "TEXT",
-      "content": "BackHandler() is a compose side effect that lets us handle back press. We can pass  a lambda to the OnBackPressedDispatcher of the local owner of back press dispatcher. It can then propagate up the view tree.\nNote to self:  read PredictiveBackHandler",
+      "content": "BackHandler() is a compose side effect that lets us handle back press. We can pass  a lambda to the OnBackPressedDispatcher of the local owner of back press dispatcher. It can then propagate up the view tree.</br>Note to self:  read PredictiveBackHandler",
       "timestamp": "19/11/2024 22:54:00",
       "tags": [
         "Android",
