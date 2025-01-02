@@ -3,7 +3,7 @@
     {
       "title": "Kotlin Soft keywords and enum",
       "type": "TEXT",
-      "content": "Soft keywords are those that you can use as variable names, function names, etc. A good example is the 'enum' keyword in Kotlin. <code>val enum = 10 //compiles \n val class = 10 //error -> class is hard keyword</code>",
+      "content": "Soft keywords are those that you can use as variable names, function names, etc. A good example is the 'enum' keyword in Kotlin.\n<code>val enum = 10 //compiles\nval class = 10 //error -> class is hard keyword</code>",
       "timestamp": "",
       "tags": ["Kotlin"]
     },
