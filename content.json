@@ -30,7 +30,7 @@
     },
     {
       "title": "Clearing all Runnables from Handler",
-      "content": "To clear all runnable callbacks from handler<code>handler.removeCallbacksAndMessages(null);</code>Just pass a \"null\"!!",
+      "content": "To clear all runnable callbacks from handler <code>handler.removeCallbacksAndMessages(null);</code> Just pass a \"null\"!!",
       "timestamp": "21/11/2024 15:10:44",
       "tags": [
         "Android"
