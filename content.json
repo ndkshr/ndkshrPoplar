@@ -1,0 +1,82 @@
+{
+  "cards": [
+    {
+      "title": "What is @JvmStatic",
+      "content": "In Kotlin, we use Companion object to put all static members and methods. This is merely an imitation of static in Java. @JvmStatic is used to tell the compiler to create an additional method in Java bytecode. So we will have two methods for the same companion method in Kotlin - one static and one non-static. Static stays in the class, and non-static is in the generated static Companion class.",
+      "timestamp": "23/11/2024 21:22:58",
+      "tags": [
+        "Android",
+        "Kotlin"
+      ]
+    },
+    {
+      "title": "What is @JvmSynthetic",
+      "content": "While maintaining APIs in Kotlin that can be used by both Java and Kotlin Client projects, we need to be careful about how we expose our APIs, especially with Kotlin extension methods, marked as public final static in Java Bytecode. Hence we should mark them as  <code>@JvmSynthetic</code> to mark the extension with a synthetic modifier in bytecode. This helps us avoid automatic generation of Java equivalents of Kotlin extensions.",
+      "timestamp": "23/11/2024 21:12:42",
+      "tags": [
+        "Android",
+        "Kotlin"
+      ]
+    },
+    {
+      "title": "JGit is awesome",
+      "content": "JGit makes it super wasy to push commits with Java; works well with Kotlin too.",
+      "timestamp": "21/11/2024 18:02:56",
+      "tags": [
+        "Java",
+        "Kotlin",
+        "Git"
+      ]
+    },
+    {
+      "title": "Clearing all Runnables from Handler",
+      "content": "To clear all runnable callbacks from handler<code>handler.removeCallbacksAndMessages(null);</code>Just pass a \"null\"!!",
+      "timestamp": "21/11/2024 15:10:44",
+      "tags": [
+        "Android"
+      ]
+    },
+    {
+      "title": "Starting multiple Flows in same CoroutineScope",
+      "content": "In Kotlin, Flows are sequential by nature. They are collected sequentially too. Hence, to make them concurrent, we should wrap each flow in separate launch{} block.\nEg:\n<code>\nscope.launch {\n  launch {flow1.collect()}\n  launch {flow2.collect()}\n}\n</code>",
+      "timestamp": "20/11/2024 11:16:42",
+      "tags": [
+        "Kotlin"
+      ]
+    },
+    {
+      "title": "Compose: Handling Back Press",
+      "content": "BackHandler() is a compose side effect that lets us handle back press. We can pass  a lambda to the OnBackPressedDispatcher of the local owner of back press dispatcher. It can then propagate up the view tree.\nNote to self:  read PredictiveBackHandler",
+      "timestamp": "19/11/2024 22:54:00",
+      "tags": [
+        "Android",
+        "Jetpack Compose"
+      ]
+    },
+    {
+      "title": "States in Jetpack Compose",
+      "content": "States are similar to React \"States\". A value can be observed by a @Composable with the remember API. It can be used to show/hide views or other logical functionalities.",
+      "timestamp": "19/11/2024 20:33:50",
+      "tags": [
+        "Android",
+        "Jetpack Compose"
+      ]
+    },
+    {
+      "title": "Poplar: A micro-blogging app",
+      "content": "This is the first programmatically uploaded blog from the Android app. The app is made with Jetpack Compose. And ZERO fragments. This is very new for me. I'm excited!",
+      "timestamp": "19/11/2024 04:17:45",
+      "tags": [
+        "Tech"
+      ]
+    },
+    {
+      "title": "First Blog",
+      "content": " Hello, I am creating a fun application to post micro-blogs. Essentially to journal my journey and learnings through life. I hope to maintain this blog consistently!",
+      "timestamp": "19/11/2024 00:10:10",
+      "tags": [
+        "Life"
+      ]
+    }
+  ]
+}
