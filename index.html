@@ -5,135 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NDKSHR: Micro-Blogs</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-        code {
-            color: #f67280;
-            white-space: pre-wrap;
-        }
+    code {
+        color: #f67280;
+        white-space: pre-wrap;
+    }
 
-        .page-header {
-            background: #fff;
-            width: 100%;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-sizing: border-box;
-            border-bottom: 1px solid #ddd;
-        }
-        .page-header-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-        }
-        .page-header-subtitle {
-            font-size: 14px;
-            color: #666;
-        }
-        .github-button img {
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .github-button img:hover {
-            transform: scale(1.1);
-        }
+    .page-header {
+        background: #fff;
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        border-bottom: 1px solid #ddd;
+    }
 
+    .page-header-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+    }
 
+    .page-header-subtitle {
+        font-size: 14px;
+        color: #666;
+    }
 
-        /* Default layout for larger devices: Vertical */
-        .card-list {
-            display: flex;
-            flex-direction: column; /* Stack cards vertically */
-            gap: 16px; /* Space between cards */
-            width: 100%;
-            max-width: 500px; /* Limit width for better readability */
-            padding: 16px;
-            margin: 0 auto; /* Center align for larger devices */
-            box-sizing: border-box;
-        }
+    .github-button img {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
 
-        .card {
-            width: 100%; /* Take full width of container */
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 16px;
-            box-sizing: border-box;
-        }
+    .github-button img:hover {
+        transform: scale(1.1);
+    }
 
-        /* Layout for phones and smaller devices */
-        @media (max-width: 768px) {
-            .card-list {
-                flex-direction: row; /* Display cards in a row */
-                flex-wrap: nowrap; /* Prevent wrapping */
-                overflow-x: auto; /* Enable horizontal scrolling */
-                gap: 16px; /* Space between cards */
-                padding: 16px; /* Padding for scrollable area */
-            }
+    .card-list {
+        width: 100%;
+        max-width: 1000px; /* Limits width for larger devices */
+        padding: 16px;
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap; /* Allows cards to wrap for smaller screens */
+        gap: 16px;
+        justify-content: center; /* Centers the cards on the page */
+    }
 
-            .card {
-                flex: 0 0 auto; /* Cards keep their size without stretching */
-                box-align: center;
-                width: 500px; /* Fixed width for horizontal scrolling */
-                height: 100%;
-            }
-        }
+    .card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        box-sizing: border-box;
+        flex: 1 1 calc(100% - 32px); /* Takes full width by default */
+        max-width: 500px; /* Restricts maximum width */
+        min-width: 300px; /* Ensures minimum width */
+    }
 
+    .header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+    }
 
-        .header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-        .profile-picture {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 12px;
-        }
-        .title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
-        .tags {
-            margin-bottom: 12px;
-        }
-        .tags span {
-            display: inline-block;
-            background: #e6f4ea;
-            color: #34a853;
-            font-size: 12px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            margin-right: 6px;
-        }
-        .content {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-        .datetime {
-            font-size: 12px;
-            color: #999;
-            text-align: right;
-        }
-    </style>
+    .profile-picture {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 12px;
+    }
+
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .tags {
+        margin-bottom: 12px;
+    }
+
+    .tags span {
+        display: inline-block;
+        background: #e6f4ea;
+        color: #34a853;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin-right: 6px;
+    }
+
+    .content {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+
+    .datetime {
+        font-size: 12px;
+        color: #999;
+        text-align: right;
+    }
+</style>
 </head>
 <body>
 
