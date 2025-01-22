@@ -1,706 +1,193 @@
-<html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <style type="text/css">
-      ol {
-        margin: 0;
-        padding: 0
-      }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDKSHR: Micro-Blogs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-      table td,
-      table th {
-        padding: 0
-      }
+        code {
+            color: #f67280;
+            white-space: pre-wrap;
+        }
 
-      code {
-        color: #f67280;
-        white-space: pre-wrap;
-      }
+        .page-header {
+            background: #fff;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            border-bottom: 1px solid #ddd;
+        }
+        .page-header-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .page-header-subtitle {
+            font-size: 14px;
+            color: #666;
+        }
+        .github-button img {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .github-button img:hover {
+            transform: scale(1.1);
+        }
 
-      .c0 {
-        padding-top: 0pt;
-        padding-bottom: 0pt;
-        line-height: 1.15;
-        orphans: 2;
-        widows: 2;
-        text-align: left;
-        height: 11pt
-      }
 
-      .c8 {
-        color: #000000;
-        font-weight: 400;
-        text-decoration: none;
-        vertical-align: baseline;
-        font-size: 20pt;
-        font-family: "Courier New";
-        font-style: normal
-      }
 
-      .c6 {
-        color: #000000;
-        font-weight: 700;
-        text-decoration: none;
-        vertical-align: baseline;
-        font-size: 26pt;
-        font-family: "Courier New";
-        font-style: normal
-      }
+        /* Default layout for larger devices: Vertical */
+        .card-list {
+            display: flex;
+            flex-direction: column; /* Stack cards vertically */
+            gap: 16px; /* Space between cards */
+            width: 100%;
+            max-width: 500px; /* Limit width for better readability */
+            padding: 16px;
+            margin: 0 auto; /* Center align for larger devices */
+            box-sizing: border-box;
+        }
 
-      .c1 {
-        color: #000000;
-        font-weight: 400;
-        text-decoration: none;
-        vertical-align: baseline;
-        font-size: 10pt;
-        font-family: "Courier New";
-        font-style: normal
-      }
+        .card {
+            width: 100%; /* Take full width of container */
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            box-sizing: border-box;
+        }
 
-      .c9 {
-        color: #000000;
-        font-weight: 400;
-        text-decoration: none;
-        vertical-align: baseline;
-        font-size: 12pt;
-        font-family: "Courier New";
-        font-style: normal
-      }
+        /* Layout for phones and smaller devices */
+        @media (max-width: 768px) {
+            .card-list {
+                flex-direction: row; /* Display cards in a row */
+                flex-wrap: nowrap; /* Prevent wrapping */
+                overflow-x: auto; /* Enable horizontal scrolling */
+                gap: 16px; /* Space between cards */
+                padding: 16px; /* Padding for scrollable area */
+            }
 
-      .c10 {
-        padding-top: 0pt;
-        padding-bottom: 16pt;
-        line-height: 1.15;
-        page-break-after: avoid;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
+            .card {
+                flex: 0 0 auto; /* Cards keep their size without stretching */
+                box-align: center;
+                width: 500px; /* Fixed width for horizontal scrolling */
+                height: 100%;
+            }
+        }
 
-      .c3 {
-        padding-top: 0pt;
-        padding-bottom: 3pt;
-        line-height: 1.15;
-        page-break-after: avoid;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
 
-      .c7 {
-        color: #666666;
-        font-weight: 400;
-        text-decoration: none;
-        vertical-align: baseline;
-        font-size: 10pt;
-        font-family: "Courier New";
-        font-style: normal
-      }
-
-      .c11 {
-        color: #000000;
-        font-weight: 400;
-        text-decoration: none;
-        vertical-align: baseline;
-        font-size: 11pt;
-        font-family: "Courier New";
-        font-style: normal
-      }
-
-      .c2 {
-        padding-top: 20pt;
-        padding-bottom: 6pt;
-        line-height: 1.15;
-        page-break-after: avoid;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
-
-      .c4 {
-        padding-top: 0pt;
-        padding-bottom: 0pt;
-        line-height: 1.15;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
-
-      .c5 {
-        background-color: #ffffff;
-        max-width: 468pt;
-        padding: 72pt 72pt 72pt 72pt
-      }
-
-      .title {
-        padding-top: 0pt;
-        color: #000000;
-        font-size: 26pt;
-        padding-bottom: 3pt;
-        font-family: "Arial";
-        line-height: 1.15;
-        page-break-after: avoid;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
-
-      .subtitle {
-        padding-top: 0pt;
-        color: #666666;
-        font-size: 15pt;
-        padding-bottom: 16pt;
-        font-family: "Arial";
-        line-height: 1.15;
-        page-break-after: avoid;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
-
-      li {
-        color: #000000;
-        font-size: 11pt;
-        font-family: "Arial"
-      }
-
-      p {
-        margin: 0;
-        color: #000000;
-        font-size: 11pt;
-        font-family: "Arial"
-      }
-
-      h1 {
-        padding-top: 20pt;
-        color: #000000;
-        font-size: 20pt;
-        padding-bottom: 6pt;
-        font-family: "Arial";
-        line-height: 1.15;
-        page-break-after: avoid;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
-
-      h2 {
-        padding-top: 18pt;
-        color: #000000;
-        font-size: 16pt;
-        padding-bottom: 6pt;
-        font-family: "Arial";
-        line-height: 1.15;
-        page-break-after: avoid;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
-
-      h3 {
-        padding-top: 16pt;
-        color: #434343;
-        font-size: 14pt;
-        padding-bottom: 4pt;
-        font-family: "Arial";
-        line-height: 1.15;
-        page-break-after: avoid;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
-
-      h4 {
-        padding-top: 14pt;
-        color: #666666;
-        font-size: 12pt;
-        padding-bottom: 4pt;
-        font-family: "Arial";
-        line-height: 1.15;
-        page-break-after: avoid;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
-
-      h5 {
-        padding-top: 12pt;
-        color: #666666;
-        font-size: 11pt;
-        padding-bottom: 4pt;
-        font-family: "Arial";
-        line-height: 1.15;
-        page-break-after: avoid;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
-
-      h6 {
-        padding-top: 12pt;
-        color: #666666;
-        font-size: 11pt;
-        padding-bottom: 4pt;
-        font-family: "Arial";
-        line-height: 1.15;
-        page-break-after: avoid;
-        font-style: italic;
-        orphans: 2;
-        widows: 2;
-        text-align: left
-      }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .profile-picture {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 12px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .tags {
+            margin-bottom: 12px;
+        }
+        .tags span {
+            display: inline-block;
+            background: #e6f4ea;
+            color: #34a853;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-right: 6px;
+        }
+        .content {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .datetime {
+            font-size: 12px;
+            color: #999;
+            text-align: right;
+        }
     </style>
-  </head>
-  <body class="c5 doc-content">
-    <p class="c3 title" id="h.qex8af3i2suu">
-      <span class="c6">Micro Blog</span>
-    </p>
-    <p class="c10 subtitle" id="h.ny3slshhtgvs">
-      <span class="c7">Nandakishor Sekharathil <a href="https://ndkshr.github.io">(@NDKSHR)</a>
-      </span>
-    </p>
-    <hr>
-    <p class="c0">
-      <span class="c11"></span>
-    </p>
+</head>
+<body>
 
+    <div class="page-header">
+        <div>
+            <div class="page-header-title">Micro Blogs</div>
+            <div class="page-header-subtitle">Nandakishor Sekharathil</div>
+        </div>
+        <div class="github-button">
+            <a href="https://github.com/ndkshr" target="_blank">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+            </a>
+        </div>
+    </div>
 
+    <!-- Card List -->
+    <div class="card-list" id="cardList"></div>
 
+    <script>
+        // Function to create cards
+        function createCard(card) {
+            const cardElement = document.createElement('div');
+            cardElement.className = 'card';
 
+            cardElement.innerHTML = `
+                <div class="header">
+                    <img src="https://ndkshr.github.io/ndkshrPoplar/dp.jpg" alt="Profile Picture" class="profile-picture">
+                    <div class="title">${card.title}</div>
+                </div>
+                <div class="tags">
+                    ${card.tags.map(tag => `<span>${tag}</span>`).join('')}
+                </div>
+                <div class="content">${card.content}</div>
+                <div class="datetime">${card.timestamp}</div>
+            `;
 
+            return cardElement;
+        }
 
-
-
-
-
-
-
-<!--NDKSHRPOPLAR-->
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">Kotlin Soft keywords and enum</span>
-</h1>
-<p class="c4">
-  <span class="c9">Soft keywords are those that you can use as variable names, funtion names etc. A good example is 'enum' keyword in Kotlin.
-<code>
-val enum = 10 //compiles
-val class = 10 //error -> class is hard keyword
-</code></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">30/12/2024 19:49:45</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Kotlin</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">Kotlin Collections v/s Sequence </span>
-</h1>
-<p class="c4">
-  <span class="c9">Collections store all the elements in memory and Sequences are lazy by nature and only bring the required element to memory for computation.
-</br>
-Prefer sequence over collection when working with bery large data, or supposedly infinite stream of data.
-</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">29/12/2024 21:04:05</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Kotlin</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">Static v/s Dynamic v/s Strong v/s Weak Typed Languages</span>
-</h1>
-<p class="c4">
-  <span class="c9">Static v/s Dynamic: when the type checking is done. Compile time type checking makes a language static, and run-time type checking makes it dynamic.
-
-Strong v/s Weak: is decided by the ability to indirectly change type according to convenience. Some languages let conversion from int to long and vice versa. But others will protest against it for loss of precision. The latter being strongly typed and former, weakly typed.</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">29/12/2024 20:52:47</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Programming</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">View v/s ViewHolder</span>
-</h1>
-<p class="c4">
-  <span class="c9">A View is a node in the View Tree hierarchy, and View Holder is a design pattern or data modal class that is used to cache references to the View.</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">27/12/2024 08:11:35</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: RecyclerView, Android</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">Dynamic Code Loading in Android</span>
-</h1>
-<p class="c4">
-  <span class="c9"><code>DexClassLoader</code>: allows download of a new module as <code>.dex</code> or <code>.jar</code>. It can be used for A/B testing and feature flag systems. It basically allows users to load code dynamically at runtime. This is also used as a method for obfuscation, where sensitive parts of code base are loaded on request lazily from remote.</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">26/12/2024 22:38:14</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Android</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">Recycler in Recycler View</span>
-</h1>
-<p class="c4">
-  <span class="c9">Recycler in android Recycler View has two caching mechanisms. Firstly, Scrap View - a lightweight way to store unused views and ViewHolders. Secondly, Recycle Pool - stores the views but throws away a lot of the meta data including ViewHolders. Knowing the difference would help a lot while optimizing Recycler View performance.</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">22/12/2024 22:32:32</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Android</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">What is @JvmStatic</span>
-</h1>
-<p class="c4">
-  <span class="c9">In Kotlin, we use Companion object to put all static members and methods. This is merely an imitation of static in Java. @JvmStatic is used to tell the compiler to create an additional method in Java bytecode. So we will have two methods for the same companion method in Kotlin - one static and one non static. Static stays in the class, and non-static is in the generated static Companion class.</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">23/11/2024 21:22:58</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Android, Kotlin</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">What is @JvmSynthetic</span>
-</h1>
-<p class="c4">
-  <span class="c9">While maintaining APIs in Kotlin that can be used by both Java and Kotlin Client projects, we need to be careful about how we expose our APIs. Especially with Kotlin extension methods, which are marked as public final static in Java Bytecode. Hence we should mark them as  <code>@JvmSynthetic</code> to mark the extension with a synthetic modifier in bytecode. This helps us avoid automatic generation of Java equivalents of Kotlin extensions.</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">23/11/2024 21:12:42</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Android, Kotlin</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">JGit is awesome</span>
-</h1>
-<p class="c4">
-  <span class="c9">JGit makes it super wasy to push commits with Java; works well with Kotlin too.</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">21/11/2024 18:02:56</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Java, Kotlin, Git</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">Clearing all Runnables from Handler</span>
-</h1>
-<p class="c4">
-  <span class="c9">To clear all runnable callbacks from handler.
-
-<code>
-handler.removeCallbacksAndMessages(null);
-</code>
-
-Just pass a "null"!!</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">21/11/2024 15:10:44</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Android</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-                    
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">Starting multiple Flows in same CoroutineScope</span>
-</h1>
-<p class="c4">
-  <span class="c9">In Kotlin, Flows are sequential by nature. They are collected sequentially too. Hence, to make them concurrent, we should wrap each flow in separate launch{} block.
-Eg:
-<code>
-scope.launch {
-  launch {flow1.collect()}
-  launch {flow2.collect()}
-}
-</code></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">20/11/2024 11:16:42</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Kotlin</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">Compose: Handling Back Press</span>
-</h1>
-<p class="c4">
-  <span class="c9">BackHandler() is a compose side effect that lets us handle back press. We can pass  a lambda to the OnBackPressedDispatcher of the local owner of back press dispatcher. It can then propogate up the view tree.
-
-Note to self:  read PredictiveBackHandler</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">19/11/2024 22:54:00</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Android, JetpackCompose</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-                
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">States in Jetpack Compose</span>
-</h1>
-<p class="c4">
-  <span class="c9">States are similar to React "States". A value can be observed by a @Composable with the remember API. It can be used to show/hide ciews or other logical functionalities.</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">19/11/2024 20:33:50</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Android, Jetpack Compose</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-
-<!--START-->
-<h1 class="c2" id="h.hmvd5kvp20sd">
-  <span class="c8">Poplar: A micro blogging app</span>
-</h1>
-<p class="c4">
-  <span class="c9">This is the first programmatically uploaded blog from the Android app. The app is made with Jetpack Compose. And ZERO fragments. This is very new for me. I'm excited!</span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c4">
-  <span class="c1">19/11/2024 04:17:45</span>
-</p>
-<p class="c4">
-  <span class="c1">Tag: Tech</span>
-</p>
-<hr>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<p class="c0">
-  <span class="c1"></span>
-</p>
-<!--END-->
-            
-        
-        
-    <h1 class="c2" id="h.hmvd5kvp20sd">
-      <span class="c8">First Blog</span>
-    </h1>
-    <p class="c4">
-      <span class="c9"> Hello, I am creating a fun application to post micro-blogs. Essentially to journal my journey and learnings through life. I hope to maintain this blog consistently! </span>
-    </p>
-    <p class="c0">
-      <span class="c1"></span>
-    </p>
-    <p class="c4">
-      <span class="c1">19/11/2024 00:10:10</span>
-    </p>
-    <p class="c4">
-      <span class="c1">Tag: Life</span>
-    </p>
-    <hr>
-    <p class="c0">
-      <span class="c1"></span>
-    </p>
-    <p class="c0">
-      <span class="c1"></span>
-    </p>
-  </body>
+        // Fetch the JSON file and populate the cards
+        fetch('https://ndkshr.github.io/ndkshrPoplar/content.json', {
+            method: 'GET',
+        })
+            .then(function(response) {return response.json();})
+            .then(function(data) {
+                // Access the array inside the "cards" key
+                const cards = data.cards;
+                const cardList = document.getElementById('cardList');
+                cards.forEach(card => {
+                    const cardElement = createCard(card);
+                    cardList.appendChild(cardElement);
+                });
+            })
+            .catch(error => console.error('Error loading cards:', error));
+    </script>
+</body>
 </html>
